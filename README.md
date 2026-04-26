@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 Solar System — Interactive 3D Experience
 
-## Getting Started
+An interactive, browser-based 3D solar system built with Next.js, Three.js, and TypeScript.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- 3D renderings of all 8 planets, Pluto, the Sun, and Earth's Moon
+- Realistic orbital speeds based on actual astronomical data
+- Clickable planets with info panels (type, atmosphere, day/year length)
+- Smooth camera zoom on planet selection
+- Animated asteroid belt between Mars and Jupiter (4,000 instanced meshes)
+- Moon orbiting Earth in real time
+- Animated cloud layer on Earth
+- Animated, textured Sun with emissive glow
+- Saturn's rings rendered as a separate mesh
+- Pause / Play and speed multiplier controls (0.25× – 8×)
+- Toggle orbit rings on/off
+- Cinematic intro screen with fly-in zoom on Enter
+- Futuristic UI — Orbitron + Rajdhani fonts, frosted glass panels
+
+---
+
+## 🗂 Project Structure
+
+```
+solarsystem/
+├── app/
+│   └── page.tsx              # Main scene — Three.js setup, planets, UI, tooltips
+├── lib/
+│   ├── celestialData.js      # Planet data (radius, orbit period, atmosphere, descriptions)
+│   ├── scale.js              # scaleDistanceAU() and scaleRadius() helpers
+│   └── textures.js           # Textured mesh factories for each planet + asteroid belt
+├── public/
+│   └── textures/
+│       ├── earth/            # earth_day, earth_night, earth_clouds, normal, specular
+│       ├── space/            # milky way background, sun texture
+│       └── [planet]/         # Individual planet texture maps
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🪐 Planet Data
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All data related to the planets lives in `lib/celestialData.js` and includes:
 
-## Learn More
+| Field | Description |
+|-------|-------------|
+| `AU` | Distance from Sun in astronomical units |
+| `radius_km` | Real radius in km (scaled for rendering) |
+| `orbital_period_days` | Used to compute relative orbit speeds |
+| `axis_rotation_period_hours` | Displayed in the info panel |
+| `atmosphere_composition` | Array of gas names |
+| `description` | Long-form paragraph shown in the right tooltip |
+| `Nickname` | Shown as a subtitle in the left tooltip |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ⚙️ Scaling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Defined in `lib/scale.js`:
 
-## Deploy on Vercel
+- `scaleDistanceAU(au)` — converts AU to Three.js scene units
+- `scaleRadius(km)` — converts real km radius to scene units
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🛠 Tech Stack
+
+- [Next.js 14](https://nextjs.org/)
+- [Three.js](https://threejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Google Fonts — Orbitron & Rajdhani](https://fonts.google.com/)
+
+---
+
+*Tebello Rose — 2026*
