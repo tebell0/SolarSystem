@@ -1294,6 +1294,21 @@ export default function Home() {
 
       {/* Three.js mount node */}
       <div ref={mountRef} style={{ width: "100vw", height: "100vh" }} />
+      {/* Footer credit */}
+      <div style={{
+        position: "absolute",
+        bottom: 16,
+        right: 20,
+        fontFamily: "'Orbitron', monospace",
+        fontSize: 9,
+        letterSpacing: 2,
+        color: "rgba(120,180,255,0.25)",
+        textTransform: "uppercase",
+        pointerEvents: "none",
+        userSelect: "none",
+      }}>
+        Tebello Rose 2026
+      </div>
     </div>
   );
 }
